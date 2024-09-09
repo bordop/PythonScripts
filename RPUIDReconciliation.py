@@ -90,8 +90,8 @@ for rpuid in rpuidList:
 
 
 # provides aggregated results - objectid count by feature class/dataset
-grouped = df.groupby(['rpuid', 'srcFeatureDataset', 'srcFeatureClass']).count().reset_index()
-grouped.sort_values(['rpuid','objectid'], ascending=False)
+grouped = df.groupby(['srcFeatureDataset', 'srcFeatureClass']).count('objectid').reset_index()
+grouped.sort_values(['objectid'], ascending=False)
 grouped = grouped.rename(columns={'objectid': 'objectidSUM'})
 
 # second DataFrame reports values not found in target database
